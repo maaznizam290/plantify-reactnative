@@ -2,9 +2,9 @@ import React from 'react';
 import {ActivityIndicator, Image, Text, View} from 'react-native';
 
 export default function SplashScreen({navigation}) {
-  setTimeout(() => {
-    navigation.navigate('Signup');
-  }, 1500);
+  // setTimeout(() => {
+  //   navigation.navigate('Signup');
+  // }, 1500);
   return (
     <>
       <View
@@ -62,12 +62,14 @@ export default function SplashScreen({navigation}) {
         source={require('../assets/Vector3.png')}
         style={{
           position: 'absolute',
-          width: 240,
-          height: 194,
-          top: -77,
+          width: 200,
+          height: 154,
+          top: -21,
           flexDirection: 'row',
-          margin: 67,
-          left: 30,
+          marginTop: 47,
+          left: 90,
+          // borderRadius: 75,
+          // padding: 65,
         }}
       />
 
@@ -87,7 +89,7 @@ export default function SplashScreen({navigation}) {
         style={{
           width: 76,
           height: 76,
-          left: 277,
+          left: 244,
           top: 54,
           position: 'absolute',
         }}
@@ -103,16 +105,46 @@ export default function SplashScreen({navigation}) {
         {' '}
         PLANTIFY
       </Text>
+      <Image
+        source={require('../assets/Rectangle122.png')}
+        style={{top: 400, position: 'absolute'}}
+      />
       <Text
         style={{
-          color: '0D986A',
-          fontSize: 23,
-          top: 135,
+          top: 400,
+          width: 227,
+          height: 88,
+          fontSize: 37,
+          left: 24,
+          color: '#0D986A',
           position: 'absolute',
         }}>
         GET READY BE HIGYENIC
       </Text>
-      <Image source={require('../assets/Rectangle122.png')} style={{top: -7}} />
+      <Text
+        style={{
+          top: 510,
+          width: 370,
+          height: 92,
+          fontSize: 16,
+          left: 7,
+          color: '#0D986A',
+          position: 'absolute',
+        }}>
+        Jelajahi AiLearn untuk menambah kemampuanmu dalam mengoperasikan Adobe
+        Illustrator
+      </Text>
+
+      <Image
+        source={require('../assets/Botton.png')}
+        style={{
+          width: 320,
+          position: 'absolute',
+          top: 600,
+          left: 15,
+          borderRadius: 20,
+        }}
+      />
     </>
   );
 }
