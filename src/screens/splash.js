@@ -2,9 +2,9 @@ import React from 'react';
 import {ActivityIndicator, Image, Text, View} from 'react-native';
 
 export default function SplashScreen({navigation}) {
-  // setTimeout(() => {
-  //   navigation.navigate('Signup');
-  // }, 1500);
+  setTimeout(() => {
+    navigation.navigate('ProductPage');
+  }, 1500);
   return (
     <>
       <View

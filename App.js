@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Signup from './src/screens/signup';
-import Splash from './src/screens/splash';
 import SplashScreen from './src/screens/splash';
 import {Image} from 'react-native';
+import ProductPage from './src/screens/productpage';
+import Oneproduct from './src/screens/oneproduct';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +15,8 @@ function App() {
         <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}></Stack.Screen>
-        <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="ProductPage" component={ProductPage} />
+        <Stack.Screen name="OneProduct" component={Oneproduct} />
       </Stack.Navigator>
     </NavigationContainer>
   );
