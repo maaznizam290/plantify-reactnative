@@ -5,6 +5,7 @@ import SplashScreen from './src/screens/splash';
 import {Image} from 'react-native';
 import ProductPage from './src/screens/productpage';
 import Oneproduct from './src/screens/oneproduct';
+import HomeScreen from './src/screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ function App() {
           component={SplashScreen}></Stack.Screen>
         <Stack.Screen name="ProductPage" component={ProductPage} />
         <Stack.Screen name="OneProduct" component={Oneproduct} />
+        <Stack.Screen name="Homescreen" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
