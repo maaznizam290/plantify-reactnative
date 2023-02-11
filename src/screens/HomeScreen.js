@@ -76,7 +76,7 @@ const HomeScreen = () => {
             }}>
             <Image
               style={{width: 25, height: 25}}
-              source={require('../assets/bell.png')}
+              source={require('../assets/bookmark.png')}
             />
             <Image
               style={{
@@ -191,7 +191,7 @@ const HomeScreen = () => {
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
-              <Image source={require('../assets/heart.png')} />
+              <Image source={require('../assets/Botton.png')} />
               <Image
                 style={{marginLeft: 50, position: 'absolute'}}
                 source={require('../assets/circle.png')}
@@ -265,7 +265,7 @@ const HomeScreen = () => {
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
-              <Image source={require('../assets/unfillheart.png')} />
+              <Image source={require('../assets/coupon.png')} />
               <Image
                 style={{marginLeft: 50, position: 'absolute'}}
                 source={require('../assets/circle.png')}
@@ -395,7 +395,7 @@ const HomeScreen = () => {
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
-              <Image source={require('../assets/unfillheart.png')} />
+              <Image source={require('../assets/delivery.png')} />
               <Image
                 style={{marginLeft: 50, position: 'absolute'}}
                 source={require('../assets/circle.png')}
@@ -469,7 +469,7 @@ const HomeScreen = () => {
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
-              <Image source={require('../assets/unfillheart.png')} />
+              <Image source={require('../assets/Ellipse25.png')} />
               <Image
                 style={{marginLeft: 50, position: 'absolute'}}
                 source={require('../assets/circle.png')}
@@ -543,7 +543,7 @@ const HomeScreen = () => {
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
-              <Image source={require('../assets/unfillheart.png')} />
+              <Image source={require('../assets/coupon.png')} />
               <Image
                 style={{marginLeft: 50, position: 'absolute'}}
                 source={require('../assets/circle.png')}
@@ -617,7 +617,7 @@ const HomeScreen = () => {
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
-              <Image source={require('../assets/unfillheart.png')} />
+              <Image source={require('../assets/Ellipse25.png')} />
               <Image
                 style={{marginLeft: 50, position: 'absolute'}}
                 source={require('../assets/circle.png')}
