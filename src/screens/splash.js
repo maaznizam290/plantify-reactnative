@@ -1,10 +1,13 @@
 import React from 'react';
-import {ActivityIndicator, Image, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Image,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 
-export default function SplashScreen({navigation}) {
-  setTimeout(() => {
-    navigation.navigate('ProductPage');
-  }, 1000);
+const Splash = ({navigation}) => {
   return (
     <>
       <View
@@ -17,7 +20,7 @@ export default function SplashScreen({navigation}) {
         <Image
           source={require('../assets/Rectangle118.png')}
           style={{
-            height: 650,
+            height: 700,
             width: 550,
           }}
         />
@@ -31,7 +34,6 @@ export default function SplashScreen({navigation}) {
             flexDirection: 'row',
             alignItems: 'flex-start',
             opacity: 30,
-            Blend: 'Screen',
           }}
         />
       </View>
@@ -40,7 +42,7 @@ export default function SplashScreen({navigation}) {
         style={{
           width: 76,
           height: 76,
-          top: -595,
+          top: -765,
           left: 55,
           position: 'relative',
         }}
@@ -68,8 +70,6 @@ export default function SplashScreen({navigation}) {
           flexDirection: 'row',
           marginTop: 47,
           left: 90,
-          // borderRadius: 75,
-          // padding: 65,
         }}
       />
 
@@ -89,8 +89,8 @@ export default function SplashScreen({navigation}) {
         style={{
           width: 76,
           height: 76,
-          left: 244,
-          top: 54,
+          left: 250,
+          top: 60,
           position: 'absolute',
         }}
       />
@@ -111,11 +111,12 @@ export default function SplashScreen({navigation}) {
       />
       <Text
         style={{
-          top: 400,
-          width: 227,
+          top: 440,
+          width: 220,
           height: 88,
-          fontSize: 37,
-          left: 24,
+          fontSize: 26,
+          left: 28,
+          fontWeight: '600',
           color: '#0D986A',
           position: 'absolute',
         }}>
@@ -123,11 +124,11 @@ export default function SplashScreen({navigation}) {
       </Text>
       <Text
         style={{
-          top: 510,
-          width: 370,
+          top: 530,
+          width: 327,
           height: 92,
-          fontSize: 16,
-          left: 7,
+          fontSize: 14,
+          left: 28,
           color: '#0D986A',
           position: 'absolute',
         }}>
@@ -135,16 +136,25 @@ export default function SplashScreen({navigation}) {
         Illustrator
       </Text>
 
-      <Image
-        source={require('../assets/Botton.png')}
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Signup')}
         style={{
-          width: 320,
           position: 'absolute',
-          top: 600,
-          left: 15,
+          marginTop: 700,
+          marginLeft: 30,
+          backgroundColor: '#0D986A',
+          width: 340,
+          height: 48,
           borderRadius: 20,
-        }}
-      />
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
+          KIRIM
+        </Text>
+      </TouchableOpacity>
     </>
   );
-}
+};
+
+export default Splash;

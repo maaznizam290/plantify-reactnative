@@ -1,22 +1,32 @@
 import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
-import COLORS from '../constant/color';
+import colors from '../components/color';
 
-const OrderScreen = () => {
+const Order = ({navigation}) => {
   return (
-    <ScrollView style={{backgroundColor: COLORS.white}}>
+    <ScrollView style={{backgroundColor: colors.white}}>
+      <TouchableOpacity onPress={() => navigation.navigate('Splash')}>
+        <View style={{marginLeft: 25, marginTop: 20}}>
+          <Image
+            style={{width: 40, height: 40}}
+            source={require('../assets/back.png')}
+          />
+        </View>
+      </TouchableOpacity>
+
       <View
         style={{
           flexDirection: 'row',
-          marginTop: 20,
           justifyContent: 'center',
           alignItems: 'center',
+          marginTop: 10,
         }}>
         <Image
           style={{width: 162, height: 162}}
           source={require('../assets/orderCircle.png')}
         />
       </View>
+
       <View
         style={{
           flexDirection: 'row',
@@ -86,4 +96,4 @@ const OrderScreen = () => {
   );
 };
 
-export default OrderScreen;
+export default Order;

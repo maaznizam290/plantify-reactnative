@@ -12,21 +12,49 @@ import {
   Button,
 } from 'react-native';
 import React from 'react';
-import COLORS from '../components/color';
+import Navbar from '../components/navbar';
+import colors from '../components/color';
 
-const HomeScreen = () => {
+const Home = ({navigation}) => {
   const categories = ['Top Pick', 'Indoor', 'Outdoor', 'Seeds', 'Plant'];
 
   const [categoryIndex, setCategoryIndex] = React.useState(0);
 
   const CategoryList = () => {
+    const axios = require('axios');
+    const data = JSON.stringify({
+      title,
+      slug,
+      description,
+      price,
+      quantity,
+    });
+    const search = () => {
+      const config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://192.168.18.207:3000/api/product',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: data,
+      };
+
+      axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
     return (
       <View style={styles.categoryContainer}>
         {categories.map((item, index) => (
           <TouchableOpacity
             key={index}
             activeOpacity={0.8}
-            onPress={() => setCategoryIndex(index)}>
+            onPress={() => search.setCategoryIndex(index)}>
             <Text
               style={[
                 styles.categoryText,
@@ -43,7 +71,7 @@ const HomeScreen = () => {
   return (
     <ScrollView>
       <SafeAreaView
-        style={{flex: 1, paddingHorizontal: 20, backgroundColor: COLORS.white}}>
+        style={{flex: 1, paddingHorizontal: 20, backgroundColor: colors.white}}>
         <View style={styles.header}>
           <View
             style={{
@@ -51,10 +79,12 @@ const HomeScreen = () => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Image
-              style={{width: 25, height: 25, marginRight: 10}}
-              source={require('../assets/leaf.png')}
-            />
+            <TouchableOpacity>
+              <Image
+                style={{width: 25, height: 25, marginRight: 10}}
+                source={require('../assets/leaf.png')}
+              />
+            </TouchableOpacity>
             <Text
               style={{
                 fontSize: 20,
@@ -64,8 +94,7 @@ const HomeScreen = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              {' '}
-              PLANTIFY{' '}
+              PLANTIFY
             </Text>
           </View>
           <View
@@ -74,19 +103,23 @@ const HomeScreen = () => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Image
-              style={{width: 25, height: 25}}
-              source={require('../assets/bookmark.png')}
-            />
-            <Image
-              style={{
-                width: 25,
-                height: 25,
-                marginLeft: 20,
-                marginHorizontal: 10,
-              }}
-              source={require('../assets/menu.png')}
-            />
+            <TouchableOpacity>
+              <Image
+                style={{width: 25, height: 25}}
+                source={require('../assets/bell.png')}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Navbar')}>
+              <Image
+                style={{
+                  width: 25,
+                  height: 25,
+                  marginLeft: 20,
+                  marginHorizontal: 10,
+                }}
+                source={require('../assets/menu.png')}
+              />
+            </TouchableOpacity>
           </View>
         </View>
         <View>
@@ -111,64 +144,42 @@ const HomeScreen = () => {
             </View>
           </ImageBackground>
         </View>
+
         <View style={{marginTop: 30, flexDirection: 'row'}}>
           <View style={styles.searchContainer}>
-            <Image
-              style={{
-                marginLeft: 25,
-                marginRight: 20,
-                width: 25,
-                height: 25,
-                alignItems: 'center',
-              }}
-              source={require('../assets/search.png')}
-            />
+            <TouchableOpacity>
+              <Image
+                style={{
+                  marginLeft: 25,
+                  marginRight: 20,
+                  width: 25,
+                  height: 25,
+                  alignItems: 'center',
+                }}
+                source={require('../assets/search.png')}
+              />
+            </TouchableOpacity>
             <TextInput placeholder="Search" style={styles.input} />
           </View>
           <View style={{marginLeft: 10}}>
-            <Image
-              style={{width: 50, height: 50}}
-              source={require('../assets/sortMenu.png')}
-            />
+            <TouchableOpacity>
+              <Image
+                style={{width: 50, height: 50}}
+                source={require('../assets/sortMenu.png')}
+              />
+            </TouchableOpacity>
           </View>
         </View>
         <CategoryList />
 
-        <View
-          style={{
-            backgroundColor: '#9CE5CB',
-            width: 330,
-            height: 145,
-            borderRadius: 15,
-            marginTop: 50,
-          }}>
-          <Text
-            style={{
-              width: 137,
-              left: 20,
-              marginTop: 10,
-              color: '#001240',
-              fontSize: 14,
-              fontWeight: '600',
-            }}>
-            Air Purifier
-          </Text>
-          <Text
-            style={{
-              left: 20,
-              fontSize: 32,
-              fontWeight: '500',
-              color: '#001240',
-              width: 239,
-            }}>
-            Peperomia
-          </Text>
-
+        <TouchableOpacity onPress={() => navigation.navigate('Product')}>
           <View
             style={{
-              flexDirection: 'row',
-              alignItems: 'flex-start',
-              marginRight: 20,
+              backgroundColor: '#9CE5CB',
+              width: 330,
+              height: 145,
+              borderRadius: 15,
+              marginTop: 50,
             }}>
             <Text
               style={{
@@ -176,37 +187,66 @@ const HomeScreen = () => {
                 left: 20,
                 marginTop: 10,
                 color: '#001240',
-                fontSize: 18,
+                fontSize: 14,
                 fontWeight: '600',
               }}>
-              $400
+              Air Purifier
             </Text>
+            <Text
+              style={{
+                left: 20,
+                fontSize: 32,
+                fontWeight: '500',
+                color: '#001240',
+                width: 239,
+              }}>
+              Peperomia
+            </Text>
+
             <View
               style={{
                 flexDirection: 'row',
-                width: 70,
-                height: 40,
-                borderRadius: 4,
-                marginTop: 10,
-                marginLeft: 20,
-                alignItems: 'center',
+                alignItems: 'flex-start',
+                marginRight: 20,
               }}>
-              <Image source={require('../assets/Botton.png')} />
-              <Image
-                style={{marginLeft: 50, position: 'absolute'}}
-                source={require('../assets/circle.png')}
-              />
-              <Image
-                style={{marginLeft: 38}}
-                source={require('../assets/circleLine.png')}
-              />
-              <Image
-                style={{width: 150, height: 150, marginTop: -150}}
-                source={require('../assets/p4.png')}
-              />
+              <Text
+                style={{
+                  width: 137,
+                  left: 20,
+                  marginTop: 10,
+                  color: '#001240',
+                  fontSize: 18,
+                  fontWeight: '600',
+                }}>
+                $400
+              </Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  width: 70,
+                  height: 40,
+                  borderRadius: 4,
+                  marginTop: 10,
+                  marginLeft: 20,
+                  alignItems: 'center',
+                }}>
+                <Image source={require('../assets/heart.png')} />
+                <Image
+                  style={{marginLeft: 50, position: 'absolute'}}
+                  source={require('../assets/circle.png')}
+                />
+                <Image
+                  style={{marginLeft: 38}}
+                  source={require('../assets/circleLine.png')}
+                />
+                <Image
+                  style={{width: 150, height: 150, marginTop: -150}}
+                  source={require('../assets/p4.png')}
+                />
+              </View>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
 
         <View
           style={{
@@ -265,7 +305,7 @@ const HomeScreen = () => {
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
-              <Image source={require('../assets/coupon.png')} />
+              <Image source={require('../assets/unfillheart.png')} />
               <Image
                 style={{marginLeft: 50, position: 'absolute'}}
                 source={require('../assets/circle.png')}
@@ -292,12 +332,12 @@ const HomeScreen = () => {
           }}>
           <Text
             style={{
-              marginTop: 20,
+              marginTop: 10,
               left: 20,
-              fontSize: 24,
+              fontSize: 20,
               fontWeight: '700',
               color: '#001240',
-              width: 239,
+              width: 210,
             }}>
             Invite a Friend and earn Plantify rewards
           </Text>
@@ -312,7 +352,6 @@ const HomeScreen = () => {
               style={{
                 width: 137,
                 left: 20,
-                marginTop: 10,
                 color: '#0D986A',
                 fontSize: 13,
                 fontWeight: '600',
@@ -324,7 +363,6 @@ const HomeScreen = () => {
                 width: 70,
                 height: 40,
                 borderRadius: 4,
-                marginTop: 10,
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
@@ -395,7 +433,7 @@ const HomeScreen = () => {
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
-              <Image source={require('../assets/delivery.png')} />
+              <Image source={require('../assets/unfillheart.png')} />
               <Image
                 style={{marginLeft: 50, position: 'absolute'}}
                 source={require('../assets/circle.png')}
@@ -434,7 +472,7 @@ const HomeScreen = () => {
           <Text
             style={{
               left: 20,
-              fontSize: 32,
+              fontSize: 30,
               fontWeight: '500',
               color: '#001240',
               width: 239,
@@ -469,7 +507,7 @@ const HomeScreen = () => {
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
-              <Image source={require('../assets/Ellipse25.png')} />
+              <Image source={require('../assets/unfillheart.png')} />
               <Image
                 style={{marginLeft: 50, position: 'absolute'}}
                 source={require('../assets/circle.png')}
@@ -543,7 +581,7 @@ const HomeScreen = () => {
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
-              <Image source={require('../assets/coupon.png')} />
+              <Image source={require('../assets/unfillheart.png')} />
               <Image
                 style={{marginLeft: 50, position: 'absolute'}}
                 source={require('../assets/circle.png')}
@@ -617,7 +655,7 @@ const HomeScreen = () => {
                 marginLeft: 20,
                 alignItems: 'center',
               }}>
-              <Image source={require('../assets/Ellipse25.png')} />
+              <Image source={require('../assets/unfillheart.png')} />
               <Image
                 style={{marginLeft: 50, position: 'absolute'}}
                 source={require('../assets/circle.png')}
@@ -674,6 +712,7 @@ const HomeScreen = () => {
             Spread the joy
           </Text>
         </View>
+        <Navbar />
       </SafeAreaView>
     </ScrollView>
   );
@@ -711,11 +750,11 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   categoryTextSelected: {
-    color: COLORS.green,
+    color: colors.green,
     paddingBottom: 5,
     borderBottomWidth: 2,
-    borderColor: COLORS.green,
+    borderColor: colors.green,
   },
 });
 
-export default HomeScreen;
+export default Home;

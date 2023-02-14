@@ -10,9 +10,10 @@ import {
   ImageBackground,
 } from 'react-native';
 import React, {useState} from 'react';
-import COLORS from '../constant/color';
+import colors from '../components/color';
+import Navbar from '../components/navbar';
 
-const CheckoutScreen = () => {
+const Checkout = ({navigation}) => {
   const [counter, setCounter] = useState(0);
 
   const AddQuantity = () => {
@@ -25,8 +26,7 @@ const CheckoutScreen = () => {
 
   return (
     <ScrollView>
-      <SafeAreaView
-        style={{flex: 1, paddingHorizontal: 20, backgroundColor: COLORS.white}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
         <View style={styles.header}>
           <View
             style={{
@@ -34,10 +34,12 @@ const CheckoutScreen = () => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Image
-              style={{width: 25, height: 25, marginLeft: 20, marginRight: 10}}
-              source={require('../assets/leaf.png')}
-            />
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+              <Image
+                style={{width: 25, height: 25, marginLeft: 20, marginRight: 10}}
+                source={require('../assets/leaf.png')}
+              />
+            </TouchableOpacity>
             <Text
               style={{
                 fontSize: 20,
@@ -47,8 +49,7 @@ const CheckoutScreen = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              {' '}
-              PLANTIFY{' '}
+              PLANTIFY
             </Text>
           </View>
           <View
@@ -57,14 +58,18 @@ const CheckoutScreen = () => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Image
-              style={{width: 25, height: 25}}
-              source={require('../assets/search.png')}
-            />
-            <Image
-              style={{width: 25, height: 25, marginLeft: 20, marginRight: 30}}
-              source={require('../assets/menu.png')}
-            />
+            <TouchableOpacity>
+              <Image
+                style={{width: 25, height: 25}}
+                source={require('../assets/search.png')}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
+              <Image
+                style={{width: 25, height: 25, marginLeft: 20, marginRight: 30}}
+                source={require('../assets/menu.png')}
+              />
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -93,14 +98,26 @@ const CheckoutScreen = () => {
               source={require('../assets/p3.png')}
             />
             <View style={{flexDirection: 'row', marginLeft: 25, marginTop: 25}}>
-              <Text style={{fontSize: 15, width: 165, fontWeight: '700'}}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#001240',
+                  width: 165,
+                  fontWeight: '700',
+                }}>
                 Watermelon Peperomia
               </Text>
               <Image
                 style={{width: 14, height: 30, marginLeft: 25}}
                 source={require('../assets/bookmark.png')}
               />
-              <Text style={{fontSize: 14, fontWeight: '500', marginLeft: 20}}>
+              <Text
+                style={{
+                  color: '#001240',
+                  fontSize: 14,
+                  fontWeight: '500',
+                  marginLeft: 20,
+                }}>
                 $350
               </Text>
             </View>
@@ -112,15 +129,21 @@ const CheckoutScreen = () => {
               marginTop: -25,
               alignItems: 'center',
             }}>
-            <Button title="+" onPress={() => AddQuantity()} />
+            <Button color="#001240" title="+" onPress={() => AddQuantity()} />
             <Text style={{fontSize: 20, marginLeft: 10, marginRight: 10}}>
               {counter}
             </Text>
-            <Button title="-" onPress={() => RemoveQuantity()} />
-            <Image
-              style={{width: 14, height: 30, marginLeft: 25}}
-              source={require('../assets/bookmark.png')}
+            <Button
+              color="#001240"
+              title="-"
+              onPress={() => RemoveQuantity()}
             />
+            <TouchableOpacity>
+              <Image
+                style={{width: 24, height: 30, marginLeft: 30}}
+                source={require('../assets/delete.png')}
+              />
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -136,14 +159,26 @@ const CheckoutScreen = () => {
               source={require('../assets/p4.png')}
             />
             <View style={{flexDirection: 'row', marginLeft: 25, marginTop: 25}}>
-              <Text style={{fontSize: 15, width: 165, fontWeight: '700'}}>
+              <Text
+                style={{
+                  color: '#001240',
+                  fontSize: 14,
+                  width: 165,
+                  fontWeight: '700',
+                }}>
                 Peperomia Obtusfolia
               </Text>
               <Image
                 style={{width: 14, height: 30, marginLeft: 25}}
                 source={require('../assets/bookmark.png')}
               />
-              <Text style={{fontSize: 14, fontWeight: '500', marginLeft: 20}}>
+              <Text
+                style={{
+                  color: '#001240',
+                  fontSize: 14,
+                  fontWeight: '500',
+                  marginLeft: 20,
+                }}>
                 $400
               </Text>
             </View>
@@ -155,16 +190,22 @@ const CheckoutScreen = () => {
               marginTop: -25,
               alignItems: 'center',
             }}>
-            <Button title="+" onPress={() => AddQuantity()} />
+            <Button color="#001240" title="+" onPress={() => AddQuantity()} />
             <Text style={{fontSize: 20, marginLeft: 10, marginRight: 10}}>
               {' '}
               {counter}
             </Text>
-            <Button title="-" onPress={() => RemoveQuantity()} />
-            <Image
-              style={{width: 14, height: 30, marginLeft: 25}}
-              source={require('../assets/bookmark.png')}
+            <Button
+              color="#001240"
+              title="-"
+              onPress={() => RemoveQuantity()}
             />
+            <TouchableOpacity>
+              <Image
+                style={{width: 24, height: 30, marginLeft: 30}}
+                source={require('../assets/delete.png')}
+              />
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -180,14 +221,26 @@ const CheckoutScreen = () => {
               source={require('../assets/p6.png')}
             />
             <View style={{flexDirection: 'row', marginLeft: 25, marginTop: 25}}>
-              <Text style={{fontSize: 15, width: 165, fontWeight: '700'}}>
+              <Text
+                style={{
+                  color: '#001240',
+                  fontSize: 14,
+                  width: 165,
+                  fontWeight: '700',
+                }}>
                 Aloe Vera
               </Text>
               <Image
                 style={{width: 14, height: 30, marginLeft: 25}}
                 source={require('../assets/bookmark.png')}
               />
-              <Text style={{fontSize: 14, fontWeight: '500', marginLeft: 20}}>
+              <Text
+                style={{
+                  color: '#001240',
+                  fontSize: 14,
+                  fontWeight: '500',
+                  marginLeft: 20,
+                }}>
                 $260
               </Text>
             </View>
@@ -199,15 +252,21 @@ const CheckoutScreen = () => {
               marginTop: -25,
               alignItems: 'center',
             }}>
-            <Button title="+" onPress={() => AddQuantity()} />
+            <Button color="#001240" title="+" onPress={() => AddQuantity()} />
             <Text style={{fontSize: 20, marginLeft: 10, marginRight: 10}}>
               {counter}
             </Text>
-            <Button title="-" onPress={() => RemoveQuantity()} />
-            <Image
-              style={{width: 14, height: 30, marginLeft: 25}}
-              source={require('../assets/bookmark.png')}
+            <Button
+              color="#001240"
+              title="-"
+              onPress={() => RemoveQuantity()}
             />
+            <TouchableOpacity>
+              <Image
+                style={{width: 24, height: 30, marginLeft: 30}}
+                source={require('../assets/delete.png')}
+              />
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -228,7 +287,13 @@ const CheckoutScreen = () => {
                 source={require('../assets/delivery.png')}
               />
             </View>
-            <Text style={{marginLeft: 8, fontSize: 15, fontWeight: '700'}}>
+            <Text
+              style={{
+                marginLeft: 8,
+                color: '#001240',
+                fontSize: 15,
+                fontWeight: '700',
+              }}>
               Delivery
             </Text>
             <View style={styles.lineStyle}>
@@ -243,8 +308,14 @@ const CheckoutScreen = () => {
             </View>
             <Text style={{marginLeft: 50}}>$80</Text>
           </View>
-          <View style={{marginLeft: 77, marginTop: -10}}>
-            <Text style={{width: 150, fontSize: 13, fontWeight: '500'}}>
+          <View style={{marginLeft: 80, marginTop: -10}}>
+            <Text
+              style={{
+                color: '#001240',
+                width: 150,
+                fontSize: 13,
+                fontWeight: '500',
+              }}>
               Order above $1200 to get free delivery{' '}
             </Text>
             <Text
@@ -252,7 +323,7 @@ const CheckoutScreen = () => {
                 color: '#0D986A',
                 fontSize: 12,
                 marginTop: -17.5,
-                marginLeft: 78,
+                marginLeft: 105,
                 fontWeight: 500,
               }}>
               Shop for more $190
@@ -278,11 +349,12 @@ const CheckoutScreen = () => {
           </View>
           <Text
             style={{
-              width: 97,
+              width: 120,
               marginLeft: 12,
               marginRight: 20,
-              fontSize: 15,
+              fontSize: 14,
               fontWeight: '700',
+              color: '#001240',
             }}>
             Apply Coupon
           </Text>
@@ -290,7 +362,6 @@ const CheckoutScreen = () => {
             style={{
               width: 120,
               height: 3,
-              marginLeft: 15,
               borderRadius: 4,
               backgroundColor: '#0D986A',
             }}></View>
@@ -365,14 +436,26 @@ const CheckoutScreen = () => {
               source={require('../assets/p8.png')}
             />
             <View style={{flexDirection: 'row', marginLeft: 25, marginTop: 25}}>
-              <Text style={{fontSize: 15, width: 165, fontWeight: '700'}}>
+              <Text
+                style={{
+                  color: '#001240',
+                  fontSize: 15,
+                  width: 165,
+                  fontWeight: '700',
+                }}>
                 Large Snake Zylanica
               </Text>
               <Image
                 style={{width: 14, height: 30, marginLeft: 25}}
                 source={require('../assets/bookmark.png')}
               />
-              <Text style={{fontSize: 14, fontWeight: '500', marginLeft: 20}}>
+              <Text
+                style={{
+                  color: '#001240',
+                  fontSize: 14,
+                  fontWeight: '500',
+                  marginLeft: 20,
+                }}>
                 $350
               </Text>
             </View>
@@ -384,52 +467,61 @@ const CheckoutScreen = () => {
               marginTop: -25,
               alignItems: 'center',
             }}>
-            <Button title="+" onPress={() => AddQuantity()} />
+            <Button color="#001240" title="+" onPress={() => AddQuantity()} />
             <Text style={{fontSize: 20, marginLeft: 10, marginRight: 10}}>
               {counter}
             </Text>
-            <Button title="-" onPress={() => RemoveQuantity()} />
-            <Image
-              style={{width: 14, height: 30, marginLeft: 25}}
-              source={require('../assets/bookmark.png')}
+            <Button
+              color="#001240"
+              title="-"
+              onPress={() => RemoveQuantity()}
             />
+            <TouchableOpacity>
+              <Image
+                style={{width: 24, height: 30, marginLeft: 30}}
+                source={require('../assets/delete.png')}
+              />
+            </TouchableOpacity>
           </View>
         </View>
 
-        <View
-          style={{
-            backgroundColor: '#0D986A',
-            borderTopLeftRadius: 30,
-            borderTopRightRadius: 30,
-            width: '100%',
-            height: 56,
-            marginBottom: 20,
-            marginTop: 20,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-          <Text
+        <TouchableOpacity onPress={() => navigation.navigate('Order')}>
+          <View
             style={{
-              fontSize: 18,
-              marginLeft: 20,
-              color: 'white',
-              width: 79,
-              fontWeight: '600',
-              width: 89,
+              backgroundColor: '#0D986A',
+              borderTopLeftRadius: 30,
+              borderTopRightRadius: 30,
+              width: '100%',
+              height: 56,
+              marginBottom: 30,
+              marginTop: 20,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
             }}>
-            Checkout
-          </Text>
-          <Text
-            style={{
-              marginRight: 30,
-              fontSize: 18,
-              color: 'white',
-              fontWeight: '600',
-            }}>
-            $1090
-          </Text>
-        </View>
+            <Text
+              style={{
+                fontSize: 18,
+                marginLeft: 20,
+                color: 'white',
+                width: 79,
+                fontWeight: '600',
+                width: 89,
+              }}>
+              Checkout
+            </Text>
+            <Text
+              style={{
+                marginRight: 30,
+                fontSize: 18,
+                color: 'white',
+                fontWeight: '600',
+              }}>
+              $1090
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <Navbar />
       </SafeAreaView>
     </ScrollView>
   );
@@ -450,4 +542,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CheckoutScreen;
+export default Checkout;
